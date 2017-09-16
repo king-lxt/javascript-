@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+    <script src="../js/jquery.js"></script>
+    <script>
+    var Book = (function() {
+        //静态的私有变量
+        var bookNum = 0;
+        //静态的私有方法
+        function checkBook(name) {
+            alert("checkBook")
+        }
+        //返回构造函数
+        return function(newId, newName, newPrice) {
+            //私有变量
+            var name, price;
+            //私有方法
+            function checkID(id) {
+                alert("检查id");
+            }
+            //特权方法
+            this.getName = function() {
+                alert("获取名字");
+            }
+            this.getPrice = function() {
+                alert("获取价钱");
+            }
+            this.setName = function() {
+                alert("设置名字")
+            }
+            this.setPrice = function() {
+                alert("设置价钱");
+            }
+            //公有属性
+            this.id = newId;
+            //公有方法
+            this.copy = function() {
+                alert("复制")
+            }
+            bookNum++;
+            if (bookNum > 100) {
+                throw new new Error('我们仅出版100本');
+            }
+            //构造器
+            this.setName(name);
+            this.setPrice(price);
+        }
+        //构建原型
+        _book.prototype = {
+            //静态公有属性
+            isJSBook: false,
+            //静态公有方法
+            display: function() {
+                alert("公有方法")
+            }
+        }
+        return _book;
+    })();
+
+    var Book = function(title, time, type) {
+        this.title = title;
+        this.time = time;
+        this.type = type;
+    }
+    var book = new Book('javascript', '2014', 'js');
+    console.log(book.title);
+    console.log(book.time);
+    console.log(book.type);
+
+    // 为了避免忘记new对象
+    var Book = function(title, time, type) {
+        if (this instanceof Book) {
+            this.title = title;
+            this.time = time;
+            this.type = type;
+        } else {
+            return new Book(title, time, type)
+        }
+    }
+    var book = Book("javascript", '2014', 'js');
+    console.log(book.title);
+    console.log(book.time);
+    console.log(book.type);
+    </script>
+</body>
+
+</html>

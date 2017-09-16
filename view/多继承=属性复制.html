@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>	</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<script>
+        var book = {
+        	name: 'javascript 设计模式',
+        	alike: ['css', 'html', 'javascript']
+        }
+        var anotherBook = {
+        	color: 'blue'
+        }
+
+		var min =  function(){
+			var i = 1,
+			len = arguments.length,
+			target = arguments[0],
+			arg;
+			//遍历被继承的对象
+			for(; i < len; i++){
+				//缓存当前的对象
+				arg = arguments[i];
+				//遍历被继承对象中的属性
+				for(var property in arg){
+					//将被继承对象中的属性复制到目标对象中
+					target[property] = arg[property];
+				}
+			}
+			//返回目标对象
+			return target;
+		}
+
+		min(anotherBook, book);
+		console.log(anotherBook.name);
+		console.log(anotherBook.alike);
+
+		anotherBook.alike.push('ajax');
+		anotherBook.name = '设计模式';
+		console.log(anotherBook.name);
+		console.log(anotherBook.alike);
+		console.log(book.name);
+		console.log(book.alike);
+
+
+
+
+		// Object.prototype.mix = function(){
+		// 	//从第一个参数起为被继承的对象
+		// 	var i = 0;
+		// 	//获取参数长度
+		// 	len = arguments.length,
+		// 	//缓存参数对象
+		// 	arg;
+		// 	//缓存参数对象
+		// 	for(; i < len; i++){
+		// 		//缓存当前的对象
+		// 		arg = arguments[i];
+		// 		//遍历被继承对象中
+		// 		for(var property in arg){
+		// 			//将被继承对象中的属性复制到目标对象中
+		// 			this[property] = arg[property]
+		// 		}
+		// 	}
+
+		// }
+		
+	</script>
+</body>
+</html>

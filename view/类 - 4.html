@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+	
+    <script src="../js/jquery.js"></script>
+    <script>
+        Function.prototype.addMehod = function(name, fn){
+            this[name] = fn;
+            return this;
+        }
+        var methods = function(){};
+        // 或者
+        // var methods = new Function();
+        methods.addMehod('checkName',function(){
+            alert("姓名");
+            return this;
+        }).addMehod("checkPwd",function(){
+            alert("密码");
+            return this;
+        }).addMehod("checkEmail",function(){
+            alert("邮箱");
+            return this;
+        })
+        methods.checkName().checkEmail().checkPwd();
+    </script>
+</body>
+
+</html>

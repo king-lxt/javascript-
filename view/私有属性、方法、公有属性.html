@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+	
+    <script src="../js/jquery.js"></script>
+    <script>
+    	var Book = function(id, name, price){
+    		// 私有属性
+    		var num = 1;
+    		// 私有方法
+    		function checkId(){
+    			alert("检查id");
+    		};
+    		// 特权方法
+    		this.getName = function(){ alert("检查名字")};
+    		this.getPrice = function(){ alert("检查价钱")};
+    		this.setName = function(){ alert("设置名字")};
+    		this.setPrice = function(){ alert("设置价钱")};
+    		// 对象公有属性
+    		this.id = id;
+    		//对象公有方法
+    		this.copy = function(){ alert("复制")};
+    		// 构造器
+    		this.setName(name);
+    		this.setPrice(price);
+    	}
+    	//对象的公有属性，对象不能访问
+    	Book.isChinese = false;
+    	//类静态公有方法，对象不能访问
+    	Book.resetTime = function(){
+    		console.log('new Tiem');
+    	}
+    	Book.prototype = {
+    		// 公有属性
+    		isJSBook : true,
+    		//公有方法
+    		display : function(){
+    			alert("display")
+    		} 
+    	};
+
+
+    	var b = new Book(11, 'javascript', 50);
+    	console.log(b.num);
+    	console.log(b.isJSBook);
+    	console.log(b.id);
+    	console.log(b.isChinese);
+    </script>
+</body>
+
+</html>

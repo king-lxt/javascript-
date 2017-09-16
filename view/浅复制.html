@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<script>
+		var extend = function(target, source){
+			//遍历源对象中的属性
+			for(var property in source){
+				//将源对象中的属性复制到目标对象中
+				target[property] = source[property];
+			}
+			//返回目标对象
+			return target;
+		}
+		var book = {
+			name: 'javascript 设计模式',
+			alike: ['css', 'html','javascript']
+		}
+		var anotherBook = {
+			color: 'blue'
+		}
+		extend(anotherBook, book);
+		console.log(anotherBook.name);
+		console.log(anotherBook.alike);
+
+		anotherBook.alike.push('ajax');
+		anotherBook.name = '设计模式';
+		console.log(anotherBook.name);
+		console.log(anotherBook.alike);
+		console.log(book.name);
+		console.log(book.alike);
+	</script>
+</body>
+</html>
